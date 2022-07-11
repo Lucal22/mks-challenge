@@ -1,5 +1,5 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const example = styled.h1 `
-background: red;
+export const Container = styled.div`
+  background: red;
 `;

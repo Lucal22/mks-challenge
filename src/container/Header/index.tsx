@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-import { example } from './styled'
+import { Container } from './styled';
 
 export default function Header() {
-  return (
-    <div> Header</div>
-  )
+  return <Container> Header</Container>;
 }

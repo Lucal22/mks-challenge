@@ -1,9 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-import { example } from './styled'
+import { Container } from './styled';
 
 export default function Footer() {
-  return (
-    <div>Footer</div>
-  )
+  return <Container>Footer</Container>;
 }
