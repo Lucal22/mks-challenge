@@ -1,0 +1,15 @@
+import { Products } from "./products";
+
+export type ReducerState = {
+  cart: {
+    value: boolean;
+}
+}
+
+export type ReducerProducts = {
+  products: {
+    products: Products;
+  }
+
+  }
+

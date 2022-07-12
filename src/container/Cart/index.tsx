@@ -1,4 +1,6 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch} from 'react-redux';
+import {openCart} from '../../features/cart';
 import {
   Container,
   Header,
@@ -18,17 +20,23 @@ import {
 import bigX from '../assets/bigX.svg';
 import smallX from '../assets/smallX.svg';
 
+
 export default function Cart() {
+
+  const dispatch = useDispatch()
+
   return (
-    <Container>
-      <CartContent>
+   <Container>
+    <CartContent>
         <Header>
           <h2>
             Carrinho
             <br />
             de compras
           </h2>
-          <BigX>
+          <BigX
+          onClick={()=>{dispatch(openCart(false))}}
+          >
             <img src={bigX} alt="Fechar carrinho" />
           </BigX>
         </Header>

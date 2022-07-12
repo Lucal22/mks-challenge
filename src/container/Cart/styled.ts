@@ -33,19 +33,21 @@ export const CartContent = styled.div`
   }
 `;
 
-export const BigX = styled.div`
+export const BigX = styled.button`
   position: absolute;
   right: 22px;
   top: 36px;
   cursor: pointer;
+  background: none;
 `;
 
-export const SmallX = styled.div`
+export const SmallX = styled.button`
   position: absolute;
   top: -6px;
   right: -9px;
   z-index: 99;
   cursor: pointer;
+  background: none;
 `;
 
 export const CartItems = styled.div`

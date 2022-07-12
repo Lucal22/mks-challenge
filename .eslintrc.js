@@ -41,5 +41,6 @@ module.exports = {
         tsx: 'never',
       },
     ],
+    "ignoreRefs": '<boolean> || false',
   },
 };

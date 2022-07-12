@@ -13,8 +13,8 @@ export const Container = styled.section`
 `;
 
 export const Grid = styled.div`
-  margin-top: 116px;
-  margin-bottom: 172px;
+  margin-top: 101px;
+  margin-bottom: 127px;
   display: grid;
   row-gap: 31px;
   column-gap: 22px;
@@ -23,6 +23,7 @@ export const Grid = styled.div`
 
 export const Product = styled.div`
   max-width: 218px;
+  height: 100%;
   border-radius: 8px;
   background-color: ${bgWhiteColor};
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.135216);
@@ -45,10 +46,14 @@ export const Product = styled.div`
 
 export const Card = styled.div`
   padding: 18px 11.56px 12px 14px;
-  height: 253px;
+  min-height: 282px;
 `;
 
 export const Image = styled.div`
+img{
+  width: 100%;
+  height: 100%;
+}
   height: 158px;
 `;
 
