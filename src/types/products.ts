@@ -1,21 +1,19 @@
-export type Products = {
+export type ProductItens = {
   id: number;
   name: string;
   brand: string;
   description: string;
   photo: string;
   price: string;
-  createdAt: string;
-  updatedAt: string;
 };
 
 export type FetchData = {
     type: string;
-    products: Products;
+    products: ProductItens;
 }
 
-export type ArrayProducts = {
-  [0]: string,
-  [1]: Products,
+export type CartProducts = {
+  cartProducts: {
+    value: ProductItens;
+  }
 }
-

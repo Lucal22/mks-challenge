@@ -7,11 +7,15 @@ import {openCart} from '../../features/cart';
 
 import { Container, Logo, CartButton } from './styled';
 import { ReducerState } from '../../types/reducer';
+import { CartProducts } from '../../types/products';
 
 
 export default function Header() {
   const dispatch = useDispatch()
   const cartOpen = useSelector((state: ReducerState) => state.cart.value)
+  const onCart = useSelector((state:CartProducts) => state.cartProducts.value)
+
+  const unique = [...new Set(onCart)];
 
   return (
     <Container>
@@ -24,7 +28,7 @@ export default function Header() {
           <img src={cartIcon} alt="Carrinho de compras" />
         </div>
         <div>
-          <p>0</p>
+          <p>{unique.length}</p>
         </div>
       </CartButton>
       {cartOpen && <Cart

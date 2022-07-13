@@ -7,6 +7,7 @@ import mySaga from './data/sagas';
 import { Provider } from 'react-redux';
 import  cartReducer  from './features/cart';
 import productsReducer from './features/get-products';
+import cartProductsReducer from './features/cart-products';
 
 let sagaMiddleware = createSagaMiddleware();
 const middleware = [sagaMiddleware];
@@ -14,9 +15,10 @@ const middleware = [sagaMiddleware];
 const store = configureStore({
 reducer: {
   cart: cartReducer,
-  products: productsReducer
+  products: productsReducer,
+  cartProducts: cartProductsReducer
 },
-middleware:(getDefaultMiddleware) => getDefaultMiddleware().concat(middleware),
+middleware:(getDefaultMiddleware) => getDefaultMiddleware({serializableCheck: false}).concat(middleware),
 
 })
 sagaMiddleware.run(mySaga);

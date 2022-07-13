@@ -1,27 +1,22 @@
-import React, { useState } from 'react';
-import { useDispatch} from 'react-redux';
+import React from 'react';
+import { useDispatch, useSelector} from 'react-redux';
 import {openCart} from '../../features/cart';
 import {
   Container,
   Header,
   CartContent,
-  CartItems,
   BigX,
-  SmallX,
-  Img,
-  Name,
-  Qtd,
-  Price,
-  Dicrease,
-  Increase,
   CartResult,
   CartConfirm,
 } from './styled';
 import bigX from '../assets/bigX.svg';
-import smallX from '../assets/smallX.svg';
+import { CartProducts } from '../../types/products';
+import ItemList from './components/ItemList';
 
 
 export default function Cart() {
+  const onCart = useSelector((state:CartProducts) => state.cartProducts.value)
+  const unique = [...new Set(onCart)];
 
   const dispatch = useDispatch()
 
@@ -40,27 +35,31 @@ export default function Cart() {
             <img src={bigX} alt="Fechar carrinho" />
           </BigX>
         </Header>
-        <CartItems>
-          <Img>x</Img>
-          <Name>Apple Watch Series 4 GPS</Name>
-          <Qtd>
-            <Dicrease type="button">-</Dicrease>
-            <p>1</p>
-            <Increase type="button">+</Increase>
-          </Qtd>
-          <Price>R$399</Price>
-          <SmallX>
-            <img src={smallX} alt="Cancelar compra do produto" />
-          </SmallX>
-        </CartItems>
+        {unique.map((product:any)=>{
+          if(product != undefined){
+            return(
+              <ItemList
+              key={product.id}
+              photo={product.photo}
+              name={product.name}
+              price={product.price}
+              id ={product.id}
+              />
+            )
+          }else{
+            return(null)
+          }
+          })}
         <CartResult>
           <div>
             <p>Total:</p>
-            <p>R$399</p>
+            <p>0</p>
           </div>
         </CartResult>
       </CartContent>
-      <CartConfirm>Finalizar Compra</CartConfirm>
+      <CartConfirm
+      onClick={()=>console.log('compra realizada')}
+      >Finalizar Compra</CartConfirm>
     </Container>
   );
 }

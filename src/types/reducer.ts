@@ -1,4 +1,4 @@
-import { Products } from "./products";
+import { ProductItens } from "./products";
 
 export type ReducerState = {
   cart: {
@@ -8,8 +8,7 @@ export type ReducerState = {
 
 export type ReducerProducts = {
   products: {
-    products: Products;
+    products: ProductItens;
   }
-
   }
 

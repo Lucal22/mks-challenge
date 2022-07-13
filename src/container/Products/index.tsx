@@ -3,25 +3,36 @@ import buyIcon from '../assets/buyIcon.svg';
 import { useDispatch, useSelector } from 'react-redux';
 import { Container, Grid, Product, Card, Description, Image } from './styled';
 import { ReducerProducts } from '../../types/reducer';
+import  {cartProducts} from '../../features/cart-products';
+import {ProductItens} from '../../types/products';
 import {getProducts} from '../../features/get-products';
 
 export default function Products() {
+  const [selectedProduct, setSelectedProduct] = useState([]);
   const dispatch = useDispatch()
+
   useEffect(()=>{
    dispatch(getProducts())
   },[dispatch])
   const products = useSelector((state:ReducerProducts) => state.products.products)
+//
 
-  function handleSubmit(event:any){
-    console.log(event.target.value)
-    console.log('event.target.value')
-    event.preventDefault()
-  }
+ function handleSubmit(event:  React.MouseEvent<HTMLButtonElement, MouseEvent>){
+  const infoProduct:ProductItens = products[event.target.value -1];
+  setSelectedProduct((prevProduct)=>{
+     return [
+            ...prevProduct, infoProduct
+            ]
+       })
+     event.preventDefault()
+   }
+   dispatch(cartProducts(selectedProduct))
   return (
     <Container>
 
-          {products != null || undefined?<Grid>
-         {Object.entries(products).map((product:any) => {
+          {products != null || undefined?
+          <Grid>
+         {Object.entries(products).map((product)=> {
           return (
             <Product key={product[1].id}>
               <Card>

@@ -23,7 +23,7 @@ export const Header = styled.div`
 
 export const CartContent = styled.div`
   position: relative;
-  padding: 36px 54px 42px 47px;
+  padding: 36px 54px 60px 47px;
   min-height: 927px;
   h2 {
     font-weight: 700;
@@ -62,14 +62,15 @@ export const CartItems = styled.div`
   border-radius: 8px;
   margin-bottom: 22px;
 `;
-export const Img = styled.div`
+export const Img = styled.img`
   max-width: 100px;
+  max-height: 101px;
 `;
 export const Name = styled.div`
   font-size: 13px;
   font-weight: 400;
   line-height: 17px;
-  max-width: 113px;
+  width: 80px;
 `;
 
 export const Qtd = styled.div`
@@ -102,7 +103,7 @@ export const Increase = styled.button`
 `;
 
 export const Price = styled.div`
-  width: 62px;
+  min-width: 62px;
   text-align: start;
   font-weight: 700;
   font-size: 14px;
@@ -110,6 +111,7 @@ export const Price = styled.div`
 `;
 
 export const CartResult = styled.div`
+margin-top: 20px;
   position: absolute;
   bottom: 42px;
   color: ${textWhiteColor};
