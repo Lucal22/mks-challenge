@@ -8,7 +8,7 @@ import {
 } from '../../styles/Colors';
 
 export const Container = styled.section`
-  width: 938px;
+  max-width: 938px;
   margin: 0 auto;
 `;
 
@@ -19,6 +19,23 @@ export const Grid = styled.div`
   row-gap: 31px;
   column-gap: 22px;
   grid-template-columns: repeat(4, 1fr);
+
+  @media(max-width: 769px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @media(max-width: 615px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media(max-width: 480px) {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
 `;
 
 export const Product = styled.div`

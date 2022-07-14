@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
-import { ProductItens } from '../../../types/products'
-import { CartItems, Dicrease, Img, Increase, Name, Price, Qtd, SmallX } from '../styled'
+import { CartItems, Dicrease, Img, Increase, Name, Price, Qtd, SmallX,  Media } from '../styled'
 import smallX from '../../assets/smallX.svg';
 
 
@@ -17,6 +16,7 @@ export default function ItemList({id, name, photo, price }:BuyItens ) {
     <CartItems>
               <Img alt='imagem do produto' src={photo} />
               <Name>{name}</Name>
+              <Media>
               <Qtd>
                 <Dicrease type="button"
                 onClick={()=>setCount(count>1?count -1:count)}
@@ -27,11 +27,13 @@ export default function ItemList({id, name, photo, price }:BuyItens ) {
                 >+</Increase>
               </Qtd>
               <Price>R${parseInt(price)*count}</Price>
+              </Media>
               <SmallX
               type="submit"
               onClick={()=>console.log('Deletando')}
               >
                 <img src={smallX} id={id.toString()} alt="Cancelar compra do produto" />
+                <p>X</p>
               </SmallX>
             </CartItems>
   )
