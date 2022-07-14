@@ -6,16 +6,24 @@ import { ReducerProducts } from '../../types/reducer';
 import  {cartProducts} from '../../features/cart-products';
 import {ProductItens} from '../../types/products';
 import {getProducts} from '../../features/get-products';
+import Skeleton from '../shimmer/Skeleton';
 
 export default function Products() {
   const [selectedProduct, setSelectedProduct] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const dispatch = useDispatch()
 
   useEffect(()=>{
    dispatch(getProducts())
   },[dispatch])
+
+   useEffect(()=>{
+     setTimeout(()=>{
+       setIsLoading(false);
+     }, 1000)
+   },[])
+
   const products = useSelector((state:ReducerProducts) => state.products.products)
-//
 
  function handleSubmit(event:  React.MouseEvent<HTMLButtonElement, MouseEvent>){
   const infoProduct:ProductItens = products[event.target.value -1];
@@ -29,10 +37,10 @@ export default function Products() {
    dispatch(cartProducts(selectedProduct))
   return (
     <Container>
-
-          {products != null || undefined?
+      {isLoading?<Skeleton />:
+          products != null || undefined?
           <Grid>
-         {Object.entries(products).map((product)=> {
+         {Object.entries(products).map((product:any)=> { //fix the type
           return (
             <Product key={product[1].id}>
               <Card>
@@ -53,13 +61,11 @@ export default function Products() {
                 <img src={buyIcon} alt="Ícone de compra" />
                 Comprar
               </button>
-
             </Product>
           );
         })}
       </Grid>
 :null}
-
 
     </Container>
   );
